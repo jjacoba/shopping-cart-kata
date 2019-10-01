@@ -1,12 +1,17 @@
 const { expect } = require("chai");
-
 const { Checkout } = require("../checkout");
+
+const productList = [{ itemCode: "A", unitPrice: 50 }];
 
 describe("shoppingCart", () => {
   it("returns a total of 0 if no items are added", () => {
-    const testCheckout = new Checkout();
-    testCheckout.total;
-    expect(testCheckout.total).to.eql(0);
+    const testCheckout = new Checkout(productList);
+    expect(testCheckout.total()).to.eql(0);
+  });
+  it("returns a total of 50 for a single item A", () => {
+    const testCheckout = new Checkout(productList);
+    testCheckout.scanProduct("A");
+    expect(testCheckout.total()).to.eql(50);
   });
 });
 
