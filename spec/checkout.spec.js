@@ -4,7 +4,8 @@ const { Checkout } = require("../checkout");
 const productList = [
   { itemCode: "A", unitPrice: 50 },
   { itemCode: "B", unitPrice: 50 },
-  { itemCode: "C", unitPrice: 25 }
+  { itemCode: "C", unitPrice: 25 },
+  { itemCode: "D", unitPrice: 12 }
 ];
 
 describe("shoppingCart", () => {
@@ -26,6 +27,11 @@ describe("shoppingCart", () => {
     const testCheckout = new Checkout(productList);
     testCheckout.scanProduct("C");
     expect(testCheckout.total()).to.eql(25);
+  });
+  it("return a total of 12 for a single item D", () => {
+    const testCheckout = new Checkout(productList);
+    testCheckout.scanProduct("D");
+    expect(testCheckout.total()).to.eql(12);
   });
 });
 
