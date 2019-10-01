@@ -33,6 +33,18 @@ describe("shoppingCart", () => {
     testCheckout.scanProduct("D");
     expect(testCheckout.total()).to.eql(12);
   });
+   it("return a total of two or more of the same item", () => {
+     const testCheckout = new Checkout(productList);
+     testCheckout.scanProduct("A");
+     testCheckout.scanProduct("A");
+     expect(testCheckout.total()).to.eql(100);
+   });
+   it("returns a total of two of more different items", () => {
+     const testCheckout = new Checkout(productList);
+     testCheckout.scanProduct("A");
+     testCheckout.scanProduct("C");
+     expect(testCheckout.total()).to.eql(75);
+   });
 });
 
 /*You are implementing a simple checkout system, there are four products available, each with a price per unit. Some products have a special price when bought in certain quantities (e.g. 3 of product A costs 140, not 150). Implement a checkout system that allows items to be “scanned” via their Item Code, and returns the sub total when queried. 
