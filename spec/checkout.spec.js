@@ -74,17 +74,17 @@ describe("Methods", () => {
     testCheckout.scanProduct("B");
     expect(testCheckout.basket).to.eql({ A: 1, B: 1, C: 0, D: 0 });
   });
-  // it("has a total method which will calculate total of the items in the basket, factoring in the discounts", () => {
-  //   const testCheckout = new Checkout(productList);
-  //   testCheckout.scanProduct("A");
-  //   testCheckout.scanProduct("A");
-  //   testCheckout.scanProduct("A");
-  //   testCheckout.scanProduct("A");
-  //   testCheckout.scanProduct("B");
-  //   testCheckout.scanProduct("C");
-  //   testCheckout.scanProduct("D");
-  //   expect(testCheckout.total()).to.eql(262);
-  // });
+  it("has a total method which will calculate total of the items in the basket, factoring in the discounts", () => {
+    const testCheckout = new Checkout(productList);
+    testCheckout.scanProduct("A");
+    testCheckout.scanProduct("A");
+    testCheckout.scanProduct("A");
+    testCheckout.scanProduct("A");
+    testCheckout.scanProduct("B");
+    testCheckout.scanProduct("C");
+    testCheckout.scanProduct("D");
+    expect(testCheckout.total()).to.eql(262);
+  });
 });
 
 /*You are implementing a simple checkout system, there are four products available, each with a price per unit. Some products have a special price when bought in certain quantities (e.g. 3 of product A costs 140, not 150). Implement a checkout system that allows items to be “scanned” via their Item Code, and returns the sub total when queried. 
