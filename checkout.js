@@ -13,22 +13,27 @@ class Checkout {
     if (this.basket.A > 0 && this.basket.B > 0) {
       this.currentTotal +=
         Math.floor(this.basket.A / 3) * 140 + (this.basket.A % 3) * 50;
-        this.currentTotal +=
-          Math.floor(this.basket.B / 2) * 60 + (this.basket.B % 2) * 35
-          + this.basket.C * 25 + this.basket.D * 12;
+      this.currentTotal +=
+        Math.floor(this.basket.B / 2) * 60 +
+        (this.basket.B % 2) * 35 +
+        this.basket.C * 25 +
+        this.basket.D * 12;
     }
     if (this.basket.A > 0 && this.basket.B === 0) {
       this.currentTotal +=
-        Math.floor(this.basket.A / 3) * 140 + (this.basket.A % 3) * 50
-        + this.basket.C * 25 + this.basket.D * 12
-
+        Math.floor(this.basket.A / 3) * 140 +
+        (this.basket.A % 3) * 50 +
+        this.basket.C * 25 +
+        this.basket.D * 12;
     }
     if (this.basket.B > 0 && this.basket.A === 0) {
       this.currentTotal +=
-        Math.floor(this.basket.B / 2) * 60 + (this.basket.B % 2) * 35
-
+        Math.floor(this.basket.B / 2) * 60 +
+        (this.basket.B % 2) * 35 +
+        this.basket.C * 25 +
+        this.basket.D * 12;
     }
-     if (this.basket.A === 0 && this.basket.B === 0) {
+    if (this.basket.A === 0 && this.basket.B === 0) {
       this.currentTotal += this.basket.C * 25;
       this.currentTotal += this.basket.D * 12;
     }
