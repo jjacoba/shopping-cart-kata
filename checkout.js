@@ -1,28 +1,27 @@
-// const productList = [
-//   { itemCode: "A", unitPrice: 50 },
-//   { itemCode: "B", unitPrice: 35 },
-//   { itemCode: "C", unitPrice: 25 },
-//   { itemCode: "D", unitPrice: 12 }
-// ];
-
-const { Pricer } = require("./Pricer");
-
 class Checkout {
   constructor(productList) {
-    // console.log(productList, 'dadaasdas')
-    this.productList = productList.map(x => {
-      new Pricer(x.itemCode, x.unitPrice);
-    });
+    this.productList = productList;
+    this.currentTotal = 0;
+    this.basket = { A: 0, B: 0, C: 0, D: 0 };
   }
 
   scanProduct(itemCode) {
-    console.log(itemCode, 'ItemCODE')
-    console.log(this.productList, 'this.product list')
-    this.productList.find(x => x.itemCode === itemCode).increment();
+    this.basket[itemCode]++;
   }
 
-  totalPrice() { 
-    return this.productList.map(x => x.total()).reduce((acc, x) => acc += x);
+  total() {
+    if (this.basket.A > 0) {
+      this.currentTotal +=
+        Math.floor(this.basket.A / 3) * 140 + (this.basket.A % 3) * 50;
+    }
+    if (this.basket.B > 0) {
+      this.currentTotal +=
+        Math.floor(this.basket.B / 2) * 60 + (this.basket.B % 2) * 35;
+    } else {
+      this.currentTotal += this.basket.C * 25;
+      this.currentTotal += this.basket.D * 12;
+    }
+    return this.currentTotal;
   }
 }
 
